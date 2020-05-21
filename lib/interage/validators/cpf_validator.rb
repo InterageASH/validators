@@ -1,13 +1,12 @@
 # frozen_string_literal: true
 
-module ActiveModel
-  module Validations
-    class CpfValidator < EachValidator
-      def validate_each(record, attribute, value)
-        return if value.blank? || CPF.valid?(value)
+require 'cpf'
 
-        record.errors[attribute] << (options[:message] || :invalid)
-      end
-    end
+class CpfValidator < ActiveModel::EachValidator
+  def validate_each(record, attribute, value)
+    return if value.blank?
+    return if CPF.valid?(value)
+
+    record.errors.add(attribute, (options[:message] || :invalid))
   end
 end
