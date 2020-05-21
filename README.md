@@ -5,7 +5,7 @@
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'interage-validators', '~> 0.0.1'
+gem 'interage-validators', '~> 0.1.0'
 ```
 
 And then execute:
